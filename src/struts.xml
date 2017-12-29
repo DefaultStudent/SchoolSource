@@ -27,4 +27,11 @@
             <result></result>
         </action>
     </package>
+
+    <!-- 用户 -->
+    <package name="users" extends="struts-default" namespace="/">
+        <action name="register" class="com.schsource.users.action.UsersAction" method="saveUsers">
+            <result></result>
+        </action>
+    </package>
 </struts>

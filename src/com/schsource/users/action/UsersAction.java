@@ -41,8 +41,17 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
      * 用户注册/添加
      * @return
      */
-    public String saveUSers() {
+    public String saveUsers() {
         usersService.register(users);
+        return SUCCESS;
+    }
+
+    /**
+     * 用户删除
+     * @return
+     */
+    public String removeUsers() {
+        usersService.deleteUsers(users);
         return SUCCESS;
     }
 }
