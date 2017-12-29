@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!-- 院校 -->
+    <package name="school" extends="struts-default" namespace="/">
+        <action name="saveSchool" class="com.schsource.school.action.SchoolAction" method="saveSchool">
+            <result type="chain">findAllSchool</result>
+            <param name="savePath">/upload</param>
+        </action>
+        <action name="findAllSchool" class="com.schsource.school.action.SchoolAction" method="listAllSchool">
+            <result></result>
+        </action>
+        <action name="getSchoolById" class="com.schsource.school.action.SchoolAction" method="getSchoolById">
+            <result></result>
+        </action>
+        <action name="updateSchool" class="com.schsource.school.action.SchoolAction" method="updateSchool">
+            <result type="chain">findAllSchool</result>
+        </action>
+        <action name="removeSchool" class="com.schsource.school.action.SchoolAction" method="removeSchool">
+            <result type="chain">findAllSchool</result>
+        </action>
+        <action name="countSchoolByTId" class="com.schsource.school.action.SchoolAction" method="countSchoolById">
+            <result></result>
+        </action>
+    </package>
+</struts>
