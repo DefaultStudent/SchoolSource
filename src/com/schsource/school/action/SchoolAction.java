@@ -18,8 +18,6 @@ import java.io.*;
  */
 
 public class SchoolAction extends ActionSupport implements ModelDriven<School>{
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpSession session = request.getSession();
 
     private static final int BUFFER_SIZE = 40 * 40;
     private School school = new School();
@@ -154,6 +152,8 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
      * @return
      */
     public String getSchoolById() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
         int schId = Integer.parseInt(request.getParameter("schId"));
         School school = schoolService.findSchoolById(schId);
         session.setAttribute("schId", school.getSchId());
@@ -190,6 +190,8 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
      * @return
      */
     public String countSchoolById() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
         int tid = (int)request.getAttribute("tid");
         schoolService.countByTid(tid);
         return SUCCESS;

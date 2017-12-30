@@ -15,17 +15,23 @@ import java.util.List;
 public class UsersDao extends HibernateDaoSupport {
 
     /**
-     * 登录功能
+     * 登录
      * @param users
      * @return
      */
-    public Users login(Users users) {
+    public boolean login(Users users) {
         String hql = "from Users where usersId = ? and upwd = ?";
-        List<Users> list = (List<Users>)this.getHibernateTemplate().find(hql, users.getUsersId(), users.getUpwd());
-        if (list != null && list.size() > 0) {
-            return list.get(0);
+        List<Users> list = (List<Users>)this.getHibernateTemplate().find(hql, users.getUsersId(),
+                users.getUpwd());
+        for (Users users1 : list) {
+            users.setUname(users1.getUname());
+            users.setUlimit(users1.getUlimit());
+        }
+
+        if (list.size() > 0) {
+            return true;
         } else {
-            return null;
+            return false;
         }
     }
 

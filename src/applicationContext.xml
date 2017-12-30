@@ -15,7 +15,7 @@
 
     <!-- Hibernate配置相关文件 -->
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <!-- 注入连接池 -->
         <property name="dataSource" ref="dataSource" />
         <!-- 配置Hibernate的其他的属性 -->
@@ -33,6 +33,7 @@
             <list>
                 <value>com/schsource/users/vo/Users.hbm.xml</value>
                 <value>com/schsource/school/vo/School.hbm.xml</value>
+                <value>com/schsource/type/vo/Type.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -46,6 +47,17 @@
     <!-- 注解事务 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
 
+    <!-- 配置Action层 -->
+    <bean id="usersAction" class="com.schsource.users.action.UsersAction">
+        <property name="usersService" ref="usersService"/>
+    </bean>
+    <bean id="schoolAction" class="com.schsource.school.action.SchoolAction">
+        <property name="schoolService" ref="schoolService"/>
+    </bean>
+    <bean id="typeAction" class="com.schsource.type.action.TypeAction">
+        <property name="typeService" ref="typeService"/>
+    </bean>
+
     <!-- 配置service层 -->
     <bean id="schoolService" class="com.schsource.school.service.SchoolService">
         <property name="schoolDao" ref="schoolDao"/>
@@ -53,13 +65,18 @@
     <bean id="usersService" class="com.schsource.users.service.UsersService">
         <property name="usersDao" ref="usersDao"/>
     </bean>
+    <bean id="typeService" class="com.schsource.type.service.TypeService">
+        <property name="typeDao" ref="typeDao"/>
+    </bean>
 
     <!-- 配置dao层 -->
     <bean id="usersDao" class="com.schsource.users.dao.UsersDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
     <bean id="schoolDao" class="com.schsource.school.dao.SchoolDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="typeDao" class="com.schsource.type.dao.TypeDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 </beans>

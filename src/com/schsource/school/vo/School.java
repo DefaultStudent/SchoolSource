@@ -1,5 +1,7 @@
 package com.schsource.school.vo;
 
+import com.schsource.type.vo.Type;
+
 import java.util.Objects;
 
 public class School {

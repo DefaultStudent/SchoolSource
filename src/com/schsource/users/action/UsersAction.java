@@ -12,11 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class UsersAction extends ActionSupport implements ModelDriven<Users> {
-    HttpServletRequest request = ServletActionContext.getRequest();
-    HttpSession session = request.getSession();
 
     private Users users = new Users();
     private UsersService usersService;
+
+    public UsersService getUsersService() {
+        return usersService;
+    }
+
+    public void setUsersService(UsersService usersService) {
+        this.usersService = usersService;
+    }
+
     private int page;
 
     public int getPage() {
@@ -25,22 +32,6 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
 
     public void setPage(int page) {
         this.page = page;
-    }
-
-    public Users getUsers() {
-        return users;
-    }
-
-    public void setUsers(Users users) {
-        this.users = users;
-    }
-
-    public UsersService getUsersService() {
-        return usersService;
-    }
-
-    public void setUsersService(UsersService usersService) {
-        this.usersService = usersService;
     }
 
     @Override
@@ -70,9 +61,17 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
      * 用户登录功能
      * @return
      */
-    public String login() {
-        usersService.login(users);
-        return SUCCESS;
+    public String login() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession hsession = request.getSession();
+
+        if (usersService.login(users)) {
+            hsession.setAttribute("uname", users.getUname());
+            hsession.setAttribute("ulimit", users.getUlimit());
+            return SUCCESS;
+        } else {
+            return INPUT;
+        }
     }
 
     /**
@@ -80,6 +79,8 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
      * @return
      */
     public String getUsersById() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
         int usersId = Integer.parseInt(request.getParameter("usersId"));
         usersService.findUsersById(usersId);
         session.setAttribute("usersId", users.getUsersId());

@@ -31,7 +31,7 @@ public class SchoolService {
     public PageBean<School> findByPage(int page) {
         PageBean<School> pageBean = new PageBean<School>();
         pageBean.setPage(page);
-        int limit = 20;
+        int limit = 10;
         pageBean.setLimit(limit);
 
         int totalCount = schoolDao.getPageCount();

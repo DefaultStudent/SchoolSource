@@ -27,7 +27,7 @@ public class UsersService {
      * @param users
      * @return
      */
-    public Users login(Users users) {
+    public boolean login(Users users) {
         return usersDao.login(users);
     }
 

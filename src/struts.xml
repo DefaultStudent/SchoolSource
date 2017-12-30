@@ -5,14 +5,13 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <!-- 院校 -->
-    <package name="school" extends="struts-default" namespace="/">
+    <package name="schoolsource" extends="struts-default" namespace="/">
         <action name="saveSchool" class="com.schsource.school.action.SchoolAction" method="saveSchool">
             <result type="chain">findAllSchool</result>
             <param name="savePath">/upload</param>
         </action>
         <action name="findAllSchool" class="com.schsource.school.action.SchoolAction" method="listAllSchool">
-            <result></result>
+            <result>/school_queryall.jsp</result>
         </action>
         <action name="getSchoolById" class="com.schsource.school.action.SchoolAction" method="getSchoolById">
             <result></result>
@@ -26,10 +25,7 @@
         <action name="countSchoolByTId" class="com.schsource.school.action.SchoolAction" method="countSchoolById">
             <result></result>
         </action>
-    </package>
 
-    <!-- 用户 -->
-    <package name="users" extends="struts-default" namespace="/">
         <action name="register" class="com.schsource.users.action.UsersAction" method="saveUsers">
             <result></result>
         </action>
@@ -37,7 +33,7 @@
             <result type="chain">listAllUsers</result>
         </action>
         <action name="login" class="com.schsource.users.action.UsersAction" method="login">
-            <result></result>
+            <result name="success">main.jsp</result>
         </action>
         <action name="getUsersById" class="com.schsource.users.action.UsersAction" method="getUsersById">
             <result></result>
@@ -50,6 +46,16 @@
         </action>
         <action name="insertUsers" class="com.schsource.users.action.UsersAction" method="saveUsers">
             <result type="chain">listAllUsers</result>
+        </action>
+
+        <action name="getAllType" class="com.schsource.type.action.TypeAction" method="getAllType">
+            <result></result>
+        </action>
+        <action name="removeType" class="com.schsource.type.action.TypeAction" method="removeType">
+            <result type="chain">getAllType</result>
+        </action>
+        <action name="saveType" class="com.schsource.type.action.TypeAction" method="saveType">
+            <result type="chain">getAllType</result>
         </action>
     </package>
 </struts>
