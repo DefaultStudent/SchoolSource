@@ -37,7 +37,7 @@ public class SchoolService {
         int totalCount = schoolDao.getPageCount();
         pageBean.setTotalCount(totalCount);
 
-        int totalPage = (int) Math.ceil(totalCount / limit);
+        int totalPage = totalCount % limit == 0 ? totalCount/limit : totalCount/limit+1;
         pageBean.setTotalPage(totalPage);
 
         // 每页显示数据的集合

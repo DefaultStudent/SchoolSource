@@ -19,7 +19,7 @@ import java.io.*;
 
 public class SchoolAction extends ActionSupport implements ModelDriven<School>{
 
-    private static final int BUFFER_SIZE = 40 * 40;
+    private static final int BUFFER_SIZE = 1024 * 1024;
     private School school = new School();
     private SchoolService schoolService;
     private File upload;

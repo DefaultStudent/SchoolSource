@@ -10,7 +10,14 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Untitled</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/Lightbox-Gallery.css">
+    <link rel="stylesheet" href="assets/css/Navigation-Menu.css">
+    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 <div class="container-fluid">
@@ -25,6 +32,7 @@
             <form class="form-search">
                 <input class="input-medium search-query" type="text" /> <button type="submit" class="btn">查找</button>
             </form>
+            <a href="school_add.jsp">院校信息添加</a>
             <table class="table">
                 <thead>
                 <tr>
@@ -59,27 +67,16 @@
                     </td>
                 </tr>
                 </s:iterator>
-                <tr>
-                    <td class="tocenter">
-                        共<s:property value="PageBean.totalPage" />页
-                    </td>
-                    <td class="tocenter">
-                        共<s:property value="PageBean.totalCount" />条记录
-                    </td>
-                    <td class="tocenter">
-                        当前第<s:property value="PageBean.page" />页
-                    </td>
-                </tr>
                 <tr align="center">
                     <td colspan="4">
                         第<s:property value="PageBean.page"/>/<s:property value="PageBean.totalPage"/>页
                         <s:if test="PageBean.page!=1">
-                            <a href="${pageContext.request.contextPath }/findAllSchool/?page=1">首页</a>|
+                            <a href="${pageContext.request.contextPath }/findAllSchool?page=1">首页</a>|
                             <a href="${pageContext.request.contextPath }/findAllSchool?page=<s:property value="PageBean.page-1"/>">上一页</a>|
                         </s:if>
                         <s:if test="PageBean.page!=PageBean.totalPage">
                             <a href="${pageContext.request.contextPath }/findAllSchool?page=<s:property value="PageBean.page+1"/>">下一页</a>|
-                            <a href="${pageContext.request.contextPath }/afindAllSchool?page=<s:property value="PageBean.totalPage"/>">尾页</a>
+                            <a href="${pageContext.request.contextPath }/findAllSchool?page=<s:property value="PageBean.totalPage"/>">尾页</a>
                         </s:if>
                     </td>
                 </tr>
@@ -88,5 +85,10 @@
         </div>
     </div>
 </div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+<script src="assets/js/Simple-Slider.js"></script>
 </body>
 </html>
