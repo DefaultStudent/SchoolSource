@@ -33,5 +33,23 @@
         <action name="register" class="com.schsource.users.action.UsersAction" method="saveUsers">
             <result></result>
         </action>
+        <action name="removeUsers" class="com.schsource.users.action.UsersAction" method="removeUsers">
+            <result type="chain">listAllUsers</result>
+        </action>
+        <action name="login" class="com.schsource.users.action.UsersAction" method="login">
+            <result></result>
+        </action>
+        <action name="getUsersById" class="com.schsource.users.action.UsersAction" method="getUsersById">
+            <result></result>
+        </action>
+        <action name="updateUsers" class="com.schsource.users.action.UsersAction" method="updateUsers">
+            <result type="chain">listAllUsers</result>
+        </action>
+        <action name="listAllUsers" class="com.schsource.users.action.UsersAction" method="listAllUsers">
+            <result></result>
+        </action>
+        <action name="insertUsers" class="com.schsource.users.action.UsersAction" method="saveUsers">
+            <result type="chain">listAllUsers</result>
+        </action>
     </package>
 </struts>

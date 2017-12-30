@@ -1,9 +1,11 @@
 package com.schsource.users.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.schsource.users.service.UsersService;
 import com.schsource.users.vo.Users;
+import com.schsource.utils.PageBean;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,15 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
 
     private Users users = new Users();
     private UsersService usersService;
+    private int page;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
 
     public Users getUsers() {
         return users;
@@ -52,6 +63,49 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
      */
     public String removeUsers() {
         usersService.deleteUsers(users);
+        return SUCCESS;
+    }
+
+    /**
+     * 用户登录功能
+     * @return
+     */
+    public String login() {
+        usersService.login(users);
+        return SUCCESS;
+    }
+
+    /**
+     * 根据id查询用户信息
+     * @return
+     */
+    public String getUsersById() {
+        int usersId = Integer.parseInt(request.getParameter("usersId"));
+        usersService.findUsersById(usersId);
+        session.setAttribute("usersId", users.getUsersId());
+        session.setAttribute("uPwd", users.getUpwd());
+        session.setAttribute("uName", users.getUname());
+        session.setAttribute("uGender", users.getUgender());
+        session.setAttribute("uLimit", users.getUlimit());
+        return SUCCESS;
+    }
+
+    /**
+     * 修改用户信息
+     * @return
+     */
+    public String updateUsers() {
+        usersService.updateUsers(users);
+        return SUCCESS;
+    }
+
+    /**
+     * 查看全部用户信息
+     * @return
+     */
+    public String listAllUsers() {
+        PageBean<Users> pageBean = usersService.findUsersByPage(page);
+        ActionContext.getContext().getValueStack().set("pageBean", pageBean);
         return SUCCESS;
     }
 }

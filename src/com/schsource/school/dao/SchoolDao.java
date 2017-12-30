@@ -18,19 +18,6 @@ import java.util.List;
 public class SchoolDao extends HibernateDaoSupport{
 
     /**
-     * 查询全部学校信息
-     * @return
-     */
-    public List<School> listSchool() {
-        String hql = "from School";
-        List<School> allSch = (List<School>)this.getHibernateTemplate().find(hql);
-        if (allSch != null && allSch.size() > 0) {
-            return allSch;
-        }
-        return null;
-    }
-
-    /**
      * 添加学校信息
      * @param school
      */

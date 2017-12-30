@@ -1,6 +1,8 @@
 package com.schsource.users.dao;
 
 import com.schsource.users.vo.Users;
+import com.schsource.utils.PageHibernateCallBack;
+import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.util.List;
@@ -61,5 +63,34 @@ public class UsersDao extends HibernateDaoSupport {
      */
     public Users findUsersById(int usersid) {
         return this.getHibernateTemplate().get(Users.class, usersid);
+    }
+
+    /**
+     * 查询用户信息总数
+     * @return
+     */
+    public int getUsersPageCount() {
+        String hql = "select count(*) from School";
+        List<Long> list = (List<Long>) this.getHibernateTemplate().find(hql);
+        if (list != null && list.size() > 0) {
+            return list.get(0).intValue();
+        }
+        return 0;
+    }
+
+    /**
+     * 查询当前页面用户信息的集合
+     * @param begin
+     * @param limit
+     * @return
+     */
+    public List<Users> getUsersPageById(int begin, int limit) {
+        String hql = "from Users";
+        List<Users> list = this.getHibernateTemplate().execute((HibernateCallback<List<Users>>)
+                new PageHibernateCallBack(hql, new Object[]{}, begin, limit));
+        if (list != null && list.size() > 0) {
+            return list;
+        }
+        return null;
     }
 }

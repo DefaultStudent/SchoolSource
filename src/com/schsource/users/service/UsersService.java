@@ -2,6 +2,9 @@ package com.schsource.users.service;
 
 import com.schsource.users.dao.UsersDao;
 import com.schsource.users.vo.Users;
+import com.schsource.utils.PageBean;
+
+import java.util.List;
 
 /**
  * @author vodka
@@ -59,5 +62,27 @@ public class UsersService {
      */
     public Users findUsersById(int usersId) {
         return usersDao.findUsersById(usersId);
+    }
+
+    /**
+     * 分页显示全部用户信息
+     * @param page
+     * @return
+     */
+    public PageBean<Users> findUsersByPage(int page) {
+        PageBean<Users> pageBean = new PageBean<Users>();
+        pageBean.setPage(page);
+        int limit = 20;
+        pageBean.setLimit(limit);
+
+        int totalCount = usersDao.getUsersPageCount();
+        pageBean.setTotalCount(totalCount);
+
+        // 每页显示数据的集合
+        int begin = (page - 1) * limit;
+        List<Users> list = usersDao.getUsersPageById(begin, limit);
+        pageBean.setList(list);
+
+        return pageBean;
     }
 }
