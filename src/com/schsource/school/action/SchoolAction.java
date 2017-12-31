@@ -157,14 +157,14 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
     public String getSchoolById() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        int schId = Integer.parseInt(request.getParameter("schId"));
+        int schId = Integer.parseInt(request.getParameter("schid"));
         School school = schoolService.findSchoolById(schId);
-        session.setAttribute("schId", school.getSchid());
-        session.setAttribute("schName",school.getSchname());
-        session.setAttribute("schPic", school.getSchpic());
-        session.setAttribute("pId", school.getPname());
-        session.setAttribute("tId", school.getTname());
-        session.setAttribute("schAddress", school.getSchaddress());
+        session.setAttribute("schid", school.getSchid());
+        session.setAttribute("schname",school.getSchname());
+        session.setAttribute("schpic", school.getSchpic());
+        session.setAttribute("pname", school.getPname());
+        session.setAttribute("tname", school.getTname());
+        session.setAttribute("schaddress", school.getSchaddress());
         session.setAttribute("teacher", school.getTeacher());
         session.setAttribute("tel", school.getTel());
         return SUCCESS;
@@ -175,6 +175,11 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
      * @return
      */
     public String updateSchool() {
+        String path = ServletActionContext.getServletContext().getRealPath("/upload")
+                + this.getUploadFileName();
+        school.setSchpic(this.uploadFileName);
+        File target = new File(path);
+        copy(this.upload, target);
         schoolService.updateSchool(school);
         return SUCCESS;
     }

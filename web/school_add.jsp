@@ -18,18 +18,19 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+<%@ include file="head_admin.jsp"%>
     <div>
-        <s:form name="fom1" method="post" action="saveSchool" enctype="multipart/form-data">
-            <s:textfield name="schid" label="院校编号" size="20"/>
-            <s:textfield name="schname" label="院校名称" size="20"/>
-            <s:file name="upload" label="院校照片" size="20"/>
-            <s:textfield name="pname" label="专业编号" size="20"/>
-            <s:textfield name="tname" label="类型编号" size="20"/>
-            <s:textfield name="schaddress" label="院校地址" size="20"/>
-            <s:textfield name="teacher" label="联系教师" size="20"/>
-            <s:textfield name="tel" label="联系电话" size="20"/>
-            <s:submit value="添加" align="center"/>
-        </s:form>
+        <form name="fom1" method="post" action="saveSchool" enctype="multipart/form-data">
+            院校编号：<input name="schid" size="20"/><br>
+            院校名称：<input name="schname" size="20"/><br>
+            院校照片：<input type="file" name="upload" size="20"/><br>
+            代表专业名称：<input name="pname" size="20"/><br>
+            院校类型：<input name="tname" size="20"/><br>
+            院校地址：<input name="schaddress" size="20"/><br>
+            联系教师：<input name="teacher" size="20"/><br>
+            联系电话：<input name="tel" size="20"/><br>
+            <input type="submit" value="添加" align="center"/>
+        </form>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

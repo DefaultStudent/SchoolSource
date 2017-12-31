@@ -40,6 +40,7 @@ public class SchoolDao extends HibernateDaoSupport{
      * 更新学校信息
      * @param school
      */
+    @Transactional(readOnly = false)
     public void updateSchool(School school) {
         this.getHibernateTemplate().saveOrUpdate(school);
     }
