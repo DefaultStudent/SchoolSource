@@ -7,6 +7,8 @@ import com.schsource.school.service.SchoolService;
 import com.schsource.school.vo.School;
 import com.schsource.utils.PageBean;
 import org.apache.struts2.ServletActionContext;
+import org.springframework.transaction.annotation.Transactional;
+import sun.jvm.hotspot.debugger.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,7 +21,7 @@ import java.io.*;
 
 public class SchoolAction extends ActionSupport implements ModelDriven<School>{
 
-    private static final int BUFFER_SIZE = 1024 * 1024;
+    private static final int BUFFER_SIZE = 40 * 40;
     private School school = new School();
     private SchoolService schoolService;
     private File upload;
@@ -27,6 +29,7 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
     private String uploadFileName;
     private String savePath;
     private int page;
+
 
     public int getPage() {
         return page;
@@ -128,8 +131,8 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
      * @throws Exception
      */
     public String saveSchool() {
-        String path = ServletActionContext.getServletContext().getRealPath(this.getSavePath())
-                + "\\" + this.getUploadFileName();
+        String path = ServletActionContext.getServletContext().getRealPath("/upload")
+                + this.getUploadFileName();
         school.setSchPic(this.uploadFileName);
         File target = new File(path);
         copy(this.upload, target);

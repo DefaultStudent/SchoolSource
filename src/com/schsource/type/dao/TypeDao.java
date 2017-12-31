@@ -47,6 +47,12 @@ public class TypeDao extends HibernateDaoSupport{
         return null;
     }
 
+    public List<Type> getAllType() {
+        String hql = "from Type";
+        List<Type> list = (List<Type>) this.getHibernateTemplate().find(hql);
+        return list;
+    }
+
     /**
      * 添加院校类型信息
      * @param type

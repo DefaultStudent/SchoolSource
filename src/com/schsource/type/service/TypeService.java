@@ -49,6 +49,10 @@ public class TypeService {
         return pageBean;
     }
 
+    public List<Type> getAllType() {
+        return typeDao.getAllType();
+    }
+
     /**
      * 添加院校类型信息
      * @param type

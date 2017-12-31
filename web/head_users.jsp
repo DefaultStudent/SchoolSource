@@ -27,7 +27,7 @@
                 class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav main-nav">
                 <li role="presentation"><a href="#" id="home">院校资源库 </a></li>
-                <li role="presentation"><a href="#">院校信息 </a></li>
+                <li role="presentation"><a href="findAllSchool">院校信息 </a></li>
                 <li role="presentation"><a href="#">专业信息</a></li>
                 <li role="presentation"><a href="#">院校类型信息</a></li>
                 <li role="presentation"><a href="#">欢迎您：&nbsp;<s:property value="uname"/></a></li>

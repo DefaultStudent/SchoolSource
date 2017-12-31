@@ -42,7 +42,7 @@ public class TypeAction extends ActionSupport implements ModelDriven<Type>{
     }
 
     /**
-     * 查看全部院校类型信息
+     * 分页查看全部院校类型信息
      * @return
      */
     public String getAllType() {

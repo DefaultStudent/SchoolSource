@@ -57,6 +57,7 @@ public class SchoolDao extends HibernateDaoSupport{
      * 删除学校信息
      * @param school
      */
+    @Transactional(readOnly = false)
     public void deleteSchool(School school) {
         this.getHibernateTemplate().delete(school);
     }

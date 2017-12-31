@@ -1,6 +1,10 @@
 package com.schsource.type.vo;
 
+import com.schsource.school.vo.School;
+
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author vodka

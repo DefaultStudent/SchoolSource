@@ -7,7 +7,7 @@
 <struts>
     <package name="schoolsource" extends="struts-default" namespace="/">
         <action name="saveSchool" class="com.schsource.school.action.SchoolAction" method="saveSchool">
-            <result>/uploadTest.jsp</result>
+            <result type="chain">findAllSchool</result>
             <param name="savePath">/upload</param>
         </action>
         <action name="findAllSchool" class="com.schsource.school.action.SchoolAction" method="listAllSchool">

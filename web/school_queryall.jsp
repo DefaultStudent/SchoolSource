@@ -40,13 +40,22 @@
                         院校编号
                     </th>
                     <th>
+                        院校图片
+                    </th>
+                    <th>
                         院校名称
                     </th>
                     <th>
-                        院校类型
+                        联系教师
                     </th>
                     <th>
                         院校地址
+                    </th>
+                    <th>
+                        详情
+                    </th>
+                    <th>
+                        操作
                     </th>
                 </tr>
                 </thead>
@@ -57,13 +66,22 @@
                         <s:property value="schId"/>
                     </td>
                     <td>
+                        <img src="upload<s:property value="schPic"/>" style="width: 100px; height: 100px">
+                    </td>
+                    <td>
                         <s:property value="schName"/>
                     </td>
                     <td>
-                        <s:property value="tid"/>
+                        <s:property value="teacher"/>
                     </td>
                     <td>
                         <s:property value="schAddress"/>
+                    </td>
+                    <td>
+                        <a>查看</a>
+                    </td>
+                    <td>
+                        <s:a href="getSchoolById?schId=%{schId}">修改</s:a>&nbsp;|&nbsp;<s:a href="removeSchool?schId=%{schId}">删除</s:a>
                     </td>
                 </tr>
                 </s:iterator>
