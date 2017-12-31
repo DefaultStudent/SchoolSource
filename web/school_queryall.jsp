@@ -63,25 +63,25 @@
                 <s:iterator value="PageBean.list">
                 <tr>
                     <td>
-                        <s:property value="schId"/>
+                        <s:property value="schid"/>
                     </td>
                     <td>
-                        <img src="upload<s:property value="schPic"/>" style="width: 100px; height: 100px">
+                        <img src="upload<s:property value="schpic"/>" style="width: 100px; height: 100px">
                     </td>
                     <td>
-                        <s:property value="schName"/>
+                        <s:property value="schname"/>
                     </td>
                     <td>
                         <s:property value="teacher"/>
                     </td>
                     <td>
-                        <s:property value="schAddress"/>
+                        <s:property value="schaddress"/>
                     </td>
                     <td>
                         <a>查看</a>
                     </td>
                     <td>
-                        <s:a href="getSchoolById?schId=%{schId}">修改</s:a>&nbsp;|&nbsp;<s:a href="removeSchool?schId=%{schId}">删除</s:a>
+                        <s:a href="getSchoolById?schid=%{schid}">修改</s:a>&nbsp;|&nbsp;<s:a href="removeSchool?schid=%{schid}">删除</s:a>
                     </td>
                 </tr>
                 </s:iterator>

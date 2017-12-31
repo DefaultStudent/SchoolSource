@@ -92,10 +92,10 @@ public class SchoolService {
 
     /**
      * 根据Id统计院校
-     * @param tid
+     * @param tname
      * @return
      */
-    public School countByTid(int tid) {
-        return schoolDao.countByTid(tid);
+    public School countByTname(String tname) {
+        return schoolDao.countByTname(tname);
     }
 }

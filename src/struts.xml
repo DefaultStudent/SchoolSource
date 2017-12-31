@@ -8,6 +8,7 @@
     <package name="schoolsource" extends="struts-default" namespace="/">
         <action name="saveSchool" class="com.schsource.school.action.SchoolAction" method="saveSchool">
             <result type="chain">findAllSchool</result>
+            <result name="input">main.jsp</result>
             <param name="savePath">/upload</param>
         </action>
         <action name="findAllSchool" class="com.schsource.school.action.SchoolAction" method="listAllSchool">
@@ -22,7 +23,7 @@
         <action name="removeSchool" class="com.schsource.school.action.SchoolAction" method="removeSchool">
             <result type="chain">findAllSchool</result>
         </action>
-        <action name="countSchoolByTId" class="com.schsource.school.action.SchoolAction" method="countSchoolById">
+        <action name="countSchoolByName" class="com.schsource.school.action.SchoolAction" method="countSchoolByName">
             <result></result>
         </action>
 

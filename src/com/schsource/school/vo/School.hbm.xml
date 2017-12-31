@@ -4,14 +4,14 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.schsource.school.vo.School" table="SCHOOL" schema="SchoolSource">
-        <id name="schId" column="SchID"/>
-        <property name="schName" column="SchNAME"/>
-        <property name="schPic" column="SchPic"/>
-        <property name="pid" column="PID"/>
-        <property name="tid" column="TID"/>
-        <property name="schAddress" column="SchADDRESS"/>
-        <property name="teacher" column="TEACHER"/>
-        <property name="tel" column="TEL"/>
+    <class name="com.schsource.school.vo.School" table="school" schema="SchoolSource">
+        <id name="schid" column="schid"/>
+        <property name="schname" column="schname"/>
+        <property name="schpic" column="schpic"/>
+        <property name="pname" column="pname"/>
+        <property name="tname" column="tname"/>
+        <property name="schaddress" column="schaddress"/>
+        <property name="teacher" column="teacher"/>
+        <property name="tel" column="tel"/>
     </class>
 </hibernate-mapping>

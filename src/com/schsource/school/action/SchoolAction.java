@@ -133,7 +133,7 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
     public String saveSchool() {
         String path = ServletActionContext.getServletContext().getRealPath("/upload")
                 + this.getUploadFileName();
-        school.setSchPic(this.uploadFileName);
+        school.setSchpic(this.uploadFileName);
         File target = new File(path);
         copy(this.upload, target);
         schoolService.saveSchool(school);
@@ -159,12 +159,12 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
         HttpSession session = request.getSession();
         int schId = Integer.parseInt(request.getParameter("schId"));
         School school = schoolService.findSchoolById(schId);
-        session.setAttribute("schId", school.getSchId());
-        session.setAttribute("schName",school.getSchName());
-        session.setAttribute("schPic", school.getSchPic());
-        session.setAttribute("pId", school.getPid());
-        session.setAttribute("tId", school.getTid());
-        session.setAttribute("schAddress", school.getSchAddress());
+        session.setAttribute("schId", school.getSchid());
+        session.setAttribute("schName",school.getSchname());
+        session.setAttribute("schPic", school.getSchpic());
+        session.setAttribute("pId", school.getPname());
+        session.setAttribute("tId", school.getTname());
+        session.setAttribute("schAddress", school.getSchaddress());
         session.setAttribute("teacher", school.getTeacher());
         session.setAttribute("tel", school.getTel());
         return SUCCESS;
@@ -192,11 +192,11 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
      * 根据Id统计院校信息
      * @return
      */
-    public String countSchoolById() {
+    public String countSchoolByName() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        int tid = (int)request.getAttribute("tid");
-        schoolService.countByTid(tid);
+        String tname = (String) request.getAttribute("tname");
+        schoolService.countByTname(tname);
         return SUCCESS;
     }
 }

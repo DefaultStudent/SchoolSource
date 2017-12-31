@@ -918,13 +918,13 @@
     <table id="231" parent="2" name="PROFESSIONAL">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="232" parent="2" name="School">
+    <table id="232" parent="2" name="TYPE">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="233" parent="2" name="TYPE">
+    <table id="233" parent="2" name="Users">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="234" parent="2" name="Users">
+    <table id="234" parent="2" name="school">
       <Engine>InnoDB</Engine>
     </table>
     <column id="235" parent="231" name="PID">
@@ -950,118 +950,108 @@
       <ColNames>PID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="239" parent="232" name="SchID">
+    <column id="239" parent="232" name="TID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="232" name="SchNAME">
+    <column id="240" parent="232" name="TNAME">
       <Position>2</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="232" name="schPic">
+    <key id="241" parent="232" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>TID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="242" parent="233" name="UsersID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="243" parent="233" name="UPWD">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="244" parent="233" name="UNAME">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="232" name="PID">
+    <column id="245" parent="233" name="UGENDER">
       <Position>4</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="232" name="TID">
+    <column id="246" parent="233" name="ULIMIT">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="232" name="SchADDRESS">
+    <key id="247" parent="233" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>UsersID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="248" parent="234" name="schid">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="249" parent="234" name="schname">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="250" parent="234" name="schpic">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="251" parent="234" name="pname">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="234" name="tname">
+      <Position>5</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="253" parent="234" name="schaddress">
       <Position>6</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="232" name="TEACHER">
+    <column id="254" parent="234" name="teacher">
       <Position>7</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="232" name="TEL">
+    <column id="255" parent="234" name="tel">
       <Position>8</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="247" parent="232" name="t_id">
-      <ColNames>TID</ColNames>
-    </index>
-    <key id="248" parent="232" name="PRIMARY">
+    <key id="256" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>SchID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="249" parent="232" name="school_ibfk_1">
-      <ColNames>TID</ColNames>
-      <RefSchemaName>schoolsource</RefSchemaName>
-      <RefTableName>type</RefTableName>
-      <RefColNames>TID</RefColNames>
-    </foreign-key>
-    <column id="250" parent="233" name="TID">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="251" parent="233" name="TNAME">
-      <Position>2</Position>
-      <DataType>varchar(50)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="252" parent="233" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>TID</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="253" parent="234" name="UsersID">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="254" parent="234" name="UPWD">
-      <Position>2</Position>
-      <DataType>varchar(20)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="255" parent="234" name="UNAME">
-      <Position>3</Position>
-      <DataType>varchar(50)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="256" parent="234" name="UGENDER">
-      <Position>4</Position>
-      <DataType>varchar(20)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="257" parent="234" name="ULIMIT">
-      <Position>5</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="258" parent="234" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>UsersID</ColNames>
+      <ColNames>schid</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

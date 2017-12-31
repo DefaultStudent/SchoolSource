@@ -67,9 +67,9 @@ public class SchoolDao extends HibernateDaoSupport{
      * @param tid
      * @return
      */
-    public School countByTid(int tid) {
-        String hql = "select count(*) from School where tid = ?";
-        List<School> list = (List<School>) this.getHibernateTemplate().find(hql, tid);
+    public School countByTname(String tname) {
+        String hql = "select count(*) from School where tname = ?";
+        List<School> list = (List<School>) this.getHibernateTemplate().find(hql, tname);
         if (list != null && list.size() > 0) {
             return list.get(0);
         }

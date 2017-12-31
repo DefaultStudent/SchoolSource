@@ -1,65 +1,63 @@
 package com.schsource.school.vo;
 
-import com.schsource.type.vo.Type;
-
 import java.util.Objects;
 
 public class School {
-    private int schId;
-    private String schName;
-    private String schPic;
-    private int pid;
-    private int tid;
-    private String schAddress;
+    private int schid;
+    private String schname;
+    private String schpic;
+    private String pname;
+    private String tname;
+    private String schaddress;
     private String teacher;
     private String tel;
 
-    public int getSchId() {
-        return schId;
+    public int getSchid() {
+        return schid;
     }
 
-    public void setSchId(int schId) {
-        this.schId = schId;
+    public void setSchid(int schid) {
+        this.schid = schid;
     }
 
-    public String getSchName() {
-        return schName;
+    public String getSchname() {
+        return schname;
     }
 
-    public void setSchName(String schName) {
-        this.schName = schName;
+    public void setSchname(String schname) {
+        this.schname = schname;
     }
 
-    public String getSchPic() {
-        return schPic;
+    public String getSchpic() {
+        return schpic;
     }
 
-    public void setSchPic(String schPic) {
-        this.schPic = schPic;
+    public void setSchpic(String schpic) {
+        this.schpic = schpic;
     }
 
-    public int getPid() {
-        return pid;
+    public String getPname() {
+        return pname;
     }
 
-    public void setPid(int pid) {
-        this.pid = pid;
+    public void setPname(String pname) {
+        this.pname = pname;
     }
 
-    public int getTid() {
-        return tid;
+    public String getTname() {
+        return tname;
     }
 
-    public void setTid(int tid) {
-        this.tid = tid;
+    public void setTname(String tname) {
+        this.tname = tname;
     }
 
-    public String getSchAddress() {
-        return schAddress;
+    public String getSchaddress() {
+        return schaddress;
     }
 
-    public void setSchAddress(String schAddress) {
-        this.schAddress = schAddress;
+    public void setSchaddress(String schaddress) {
+        this.schaddress = schaddress;
     }
 
     public String getTeacher() {
@@ -80,18 +78,15 @@ public class School {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         School school = (School) o;
-        return schId == school.schId &&
-                pid == school.pid &&
-                tid == school.tid &&
-                Objects.equals(schName, school.schName) &&
-                Objects.equals(schAddress, school.schAddress) &&
+        return schid == school.schid &&
+                Objects.equals(schname, school.schname) &&
+                Objects.equals(schpic, school.schpic) &&
+                Objects.equals(pname, school.pname) &&
+                Objects.equals(tname, school.tname) &&
+                Objects.equals(schaddress, school.schaddress) &&
                 Objects.equals(teacher, school.teacher) &&
                 Objects.equals(tel, school.tel);
     }
@@ -99,6 +94,6 @@ public class School {
     @Override
     public int hashCode() {
 
-        return Objects.hash(schId, schName, pid, tid, schAddress, teacher, tel);
+        return Objects.hash(schid, schname, schpic, pname, tname, schaddress, teacher, tel);
     }
 }

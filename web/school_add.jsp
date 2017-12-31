@@ -20,12 +20,12 @@
 <body>
     <div>
         <s:form name="fom1" method="post" action="saveSchool" enctype="multipart/form-data">
-            <s:textfield name="schId" label="院校编号" size="20"/>
-            <s:textfield name="schName" label="院校名称" size="20"/>
+            <s:textfield name="schid" label="院校编号" size="20"/>
+            <s:textfield name="schname" label="院校名称" size="20"/>
             <s:file name="upload" label="院校照片" size="20"/>
-            <s:textfield name="pid" label="专业编号" size="20"/>
-            <s:textfield name="tid" label="类型编号" size="20"/>
-            <s:textfield name="schAddress" label="院校地址" size="20"/>
+            <s:textfield name="pname" label="专业编号" size="20"/>
+            <s:textfield name="tname" label="类型编号" size="20"/>
+            <s:textfield name="schaddress" label="院校地址" size="20"/>
             <s:textfield name="teacher" label="联系教师" size="20"/>
             <s:textfield name="tel" label="联系电话" size="20"/>
             <s:submit value="添加" align="center"/>
