@@ -47,11 +47,16 @@ public class SchoolDao extends HibernateDaoSupport{
 
     /**
      * 根据Name查询学校信息
-     * @param schName
+     * @param schname
      * @return
      */
-    public School getSchoolByName(String schName) {
-        return this.getHibernateTemplate().get(School.class, schName);
+    public School getSchoolByName(String schname) {
+        String hql = "from School where schname = ?";
+        List<School> list = (List<School>) getHibernateTemplate().find(hql, schname);
+        if (list != null && list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
     }
 
     /**
@@ -65,7 +70,7 @@ public class SchoolDao extends HibernateDaoSupport{
 
     /**
      * 统计某一类型院校的数量
-     * @param tid
+     * @param tname
      * @return
      */
     public School countByTname(String tname) {

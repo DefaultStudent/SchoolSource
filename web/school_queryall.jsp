@@ -29,8 +29,8 @@
     </s:else>
     <div class="row-fluid">
         <div class="span12">
-            <form class="form-search">
-                <input class="input-medium search-query" type="text" /> <button type="submit" class="btn">查找</button>
+            <form class="form-search" method="post" action="getSchoolByNameT">
+                <input class="input-medium search-query" type="text" name="schname" /> <button type="submit" class="btn">查找</button>
             </form>
             <a href="school_add.jsp">院校信息添加</a>
             <table class="table">
@@ -78,7 +78,7 @@
                         <s:property value="schaddress"/>
                     </td>
                     <td>
-                        <a>查看</a>
+                        <s:a href="getSchoolByName?schname=%{schname}">查看</s:a>
                     </td>
                     <td>
                         <s:a href="getSchoolById?schid=%{schid}">修改</s:a>&nbsp;|&nbsp;<s:a href="removeSchool?schid=%{schid}">删除</s:a>

@@ -19,21 +19,28 @@
 </head>
 <body>
     <%@ include file="head_admin.jsp"%>
-    <s:form name="fom1" method="post" action="updateSchool" enctype="multipart/form-data">
-        <s:textfield type="hidden" name="schid" value="%{#session.schid}" size="20"/><br>
-        <s:textfield name="schname" label="学校名称" value="%{#session.schname}" size="20"/><br>
-        <s:file name="upload"/>
-        <s:textfield name="pname" value="%{#session.pname}" size="20"/><br>
-        <s:textfield name="tname" value="%{#session.tname}" size="20"/><br>
-        <s:textfield name="schaddress" value="%{#session.schaddress}" size="20"/><br>
-        <s:textfield name="teacher" value="%{#session.teacher}" size="20"/><br>
-        <s:textfield name="tel" value="%{#session.tel}" size="20"/><br>
-        <s:submit type="submit" value="修改" align="center"/>
-    </s:form>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
-    <script src="assets/js/Simple-Slider.js"></script>
+    <div style="width: 50%;margin: 0 auto">
+        <form name="fom1" method="post" action="updateSchool" enctype="multipart/form-data">
+            <input type="hidden" name="schid" value="<s:property value="%{#session.schid}"/>" size="20"/>
+            <br><br><br>
+            院校名称：<input name="schname" value="<s:property value="%{#session.schname}"/>" size="20"/>
+            <br><br><br>
+            <img name="schpic" src="upload<s:property value="%{#session.schpic}"/>" style="width: 100px;height: 100px;">
+            <br><br><br>
+            请上传新的学校图片：<input type="file" name="upload" value="<s:property value="%{#session.schpic}"/>"/>
+            <br><br><br>
+            代表专业：<input name="pname" value="<s:property value="%{#session.pname}"/>" size="20"/>
+            <br><br><br>
+            院校类型：<input name="tname" value="<s:property value="%{#session.tname}"/>" size="20"/>
+            <br><br><br>
+            院校地址：<input name="schaddress" value="<s:property value="%{#session.schaddress}"/>" size="20"/>
+            <br><br><br>
+            联系教师：<input name="teacher" value="<s:property value="%{#session.teacher}"/>" size="20"/>
+            <br><br><br>
+            联系电话：<input name="tel" value="<s:property value="%{#session.tel}"/>" size="20"/>
+            <br><br><br>
+            <input typeof="submit" type="submit" value="修改" align="center"/>
+        </form>
+    </div>
 </body>
 </html>

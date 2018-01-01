@@ -31,7 +31,7 @@ public class SchoolService {
     public PageBean<School> findByPage(int page) {
         PageBean<School> pageBean = new PageBean<School>();
         pageBean.setPage(page);
-        int limit = 10;
+        int limit = 5;
         pageBean.setLimit(limit);
 
         int totalCount = schoolDao.getPageCount();
@@ -67,11 +67,11 @@ public class SchoolService {
 
     /**
      * 根据Name查询院校信息
-     * @param schName
+     * @param schname
      * @return
      */
-    public School findSchoolByName(String schName) {
-        return schoolDao.getSchoolByName(schName);
+    public School findSchoolByName(String schname) {
+       return schoolDao.getSchoolByName(schname);
     }
 
     /**
@@ -91,7 +91,7 @@ public class SchoolService {
     }
 
     /**
-     * 根据Id统计院校
+     * 根据Tname统计院校
      * @param tname
      * @return
      */

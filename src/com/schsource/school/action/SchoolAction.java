@@ -171,6 +171,46 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
     }
 
     /**
+     * 根据name查找院校信息
+     * @return
+     */
+    public String getSchoolByName() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        String name = new String(request.getParameter("schname").getBytes("ISO-8859-1"),"UTF-8");
+        School school1 = schoolService.findSchoolByName(name);
+        session.setAttribute("schid", school1.getSchid());
+        session.setAttribute("schname",school1.getSchname());
+        session.setAttribute("schpic", school1.getSchpic());
+        session.setAttribute("pname", school1.getPname());
+        session.setAttribute("tname", school1.getTname());
+        session.setAttribute("schaddress", school1.getSchaddress());
+        session.setAttribute("teacher", school1.getTeacher());
+        session.setAttribute("tel", school1.getTel());
+        return SUCCESS;
+    }
+
+    /**
+     * 根据name查找院校信息
+     * @return
+     */
+    public String getSchoolByNameT() throws Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        String name = request.getParameter("schname");
+        School school1 = schoolService.findSchoolByName(name);
+        session.setAttribute("schid", school1.getSchid());
+        session.setAttribute("schname",school1.getSchname());
+        session.setAttribute("schpic", school1.getSchpic());
+        session.setAttribute("pname", school1.getPname());
+        session.setAttribute("tname", school1.getTname());
+        session.setAttribute("schaddress", school1.getSchaddress());
+        session.setAttribute("teacher", school1.getTeacher());
+        session.setAttribute("tel", school1.getTel());
+        return SUCCESS;
+    }
+
+    /**
      * 修改院校信息
      * @return
      */
@@ -194,7 +234,7 @@ public class SchoolAction extends ActionSupport implements ModelDriven<School>{
     }
 
     /**
-     * 根据Id统计院校信息
+     * 根据tname统计院校信息
      * @return
      */
     public String countSchoolByName() {
