@@ -6,6 +6,10 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.schsource.type.service.TypeService;
 import com.schsource.type.vo.Type;
 import com.schsource.utils.PageBean;
+import org.apache.struts2.ServletActionContext;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class TypeAction extends ActionSupport implements ModelDriven<Type>{
     private Type type = new Type();
@@ -66,6 +70,16 @@ public class TypeAction extends ActionSupport implements ModelDriven<Type>{
      */
     public String removeType() {
         typeService.removeType(type);
+        return SUCCESS;
+    }
+
+    public String getTypeById() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        int tid = Integer.parseInt(request.getParameter("tid"));
+        Type type = typeService.getTypeById(tid);
+        session.setAttribute("tid", type.getTid());
+        session.setAttribute("tname", type.getTname());
         return SUCCESS;
     }
 }

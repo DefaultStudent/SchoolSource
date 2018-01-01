@@ -51,7 +51,7 @@
                         <s:property value="tname"/>
                     </td>
                     <td>
-                        <s:a>修改</s:a>&nbsp;|&nbsp;<s:a>删除</s:a>
+                        <s:a href="getTypeById?tid=%{tid}">修改</s:a>&nbsp;|&nbsp;<s:a href="removeType?tid=%{tid}">删除</s:a>
                     </td>
                 </tr>
                 </s:iterator>

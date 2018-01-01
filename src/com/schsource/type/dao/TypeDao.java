@@ -61,6 +61,7 @@ public class TypeDao extends HibernateDaoSupport{
      * 删除院校类型信息
      * @param type
      */
+    @Transactional(readOnly = false)
     public void removeType(Type type) {
         this.getHibernateTemplate().delete(type);
     }

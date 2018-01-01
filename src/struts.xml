@@ -67,5 +67,8 @@
         <action name="saveType" class="com.schsource.type.action.TypeAction" method="saveType">
             <result type="chain">getAllType</result>
         </action>
+        <action name="getTypeById" class="com.schsource.type.action.TypeAction" method="getTypeById">
+            <result>/type_update.jsp</result>
+        </action>
     </package>
 </struts>
