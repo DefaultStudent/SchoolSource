@@ -21,12 +21,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <s:if test="ulimit==1">
-        <%@include file="head_admin.jsp"%>
-    </s:if>
-    <s:else>
-        <%@include file="head_users.jsp"%>
-    </s:else>
+    <%@include file="head_admin.jsp"%>
     <div class="row-fluid">
         <div class="span12">
             <form class="form-search" method="post" action="getSchoolByNameT">

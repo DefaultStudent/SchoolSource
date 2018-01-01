@@ -6,6 +6,7 @@
 
 <struts>
     <package name="schoolsource" extends="struts-default" namespace="/">
+        <!-- 院校 -->
         <action name="saveSchool" class="com.schsource.school.action.SchoolAction" method="saveSchool">
             <result type="chain">findAllSchool</result>
             <result name="input">main.jsp</result>
@@ -33,6 +34,7 @@
             <result>/school_show.jsp</result>
         </action>
 
+        <!-- 用户 -->
         <action name="register" class="com.schsource.users.action.UsersAction" method="saveUsers">
             <result></result>
         </action>
@@ -55,8 +57,9 @@
             <result type="chain">listAllUsers</result>
         </action>
 
+        <!-- 院校类型 -->
         <action name="getAllType" class="com.schsource.type.action.TypeAction" method="getAllType">
-            <result></result>
+            <result>/type_queryall.jsp</result>
         </action>
         <action name="removeType" class="com.schsource.type.action.TypeAction" method="removeType">
             <result type="chain">getAllType</result>

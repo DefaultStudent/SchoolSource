@@ -4,6 +4,7 @@ import com.schsource.type.vo.Type;
 import com.schsource.utils.PageHibernateCallBack;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -47,16 +48,11 @@ public class TypeDao extends HibernateDaoSupport{
         return null;
     }
 
-    public List<Type> getAllType() {
-        String hql = "from Type";
-        List<Type> list = (List<Type>) this.getHibernateTemplate().find(hql);
-        return list;
-    }
-
     /**
      * 添加院校类型信息
      * @param type
      */
+    @Transactional(readOnly = false)
     public void saveType(Type type) {
         this.getHibernateTemplate().save(type);
     }

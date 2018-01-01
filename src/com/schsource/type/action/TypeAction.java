@@ -38,7 +38,7 @@ public class TypeAction extends ActionSupport implements ModelDriven<Type>{
 
     @Override
     public Type getModel() {
-        return null;
+        return type;
     }
 
     /**

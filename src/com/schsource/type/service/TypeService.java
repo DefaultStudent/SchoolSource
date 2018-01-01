@@ -32,13 +32,13 @@ public class TypeService {
         PageBean<Type> pageBean = new PageBean<Type>();
         pageBean.setPage(page);
 
-        int limit = 20;
+        int limit = 5;
         pageBean.setLimit(limit);
 
         int totalCount = typeDao.getTypePageCount();
         pageBean.setTotalCount(totalCount);
 
-        int totalPage = (int)Math.ceil(totalCount / limit);
+        int totalPage = totalCount % limit == 0 ? totalCount/limit : totalCount/limit+1;
         pageBean.setTotalPage(totalPage);
 
         // 每页显示数据的集合
@@ -47,10 +47,6 @@ public class TypeService {
         pageBean.setList(list);
 
         return pageBean;
-    }
-
-    public List<Type> getAllType() {
-        return typeDao.getAllType();
     }
 
     /**
