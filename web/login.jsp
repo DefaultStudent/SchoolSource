@@ -19,9 +19,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="dist/jquery-3.2.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <script src="dist/jquery-3.2.1.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script type="text/javascript">
+          function test() {
+              var uid = document.myform.usersId.value;
+              var exp1 = new RegExp(/^[a-zA-Z][a-zA-Z0-9_]{2,9}$/);
+              if (!exp1.test(uid)) {
+                  alert("账号格式错误");
+                  document.myform.usersId.focus();
+                  return false;
+              }
+              var uname = document.myform.uname.value;
+              var exp2 = new RegExp(/^\W{2,}$/);
+              if (!exp2.test(uname)) {
+                  alert("名字格式错误");
+                  document.myform.uname.focus();
+                  return false;
+              }
+              var upwd = document.myform.upwd.value;
+              var exp3 = new RegExp(/^\d{5,}$/);
+              if (!exp3.test(upwd)) {
+                  alert("密码格式错误");
+                  document.myform.upwd.focus();
+                  return false;
+              }
+              var ugender = document.myform.ugender.value;
+              if (ugender.equals("") && ugender == null) {
+                  alert("请选择性别")
+              }
+              var agree = document.myform.agree.value;
+              if (agree.checked) {
+                  document.myform.sub.prop("disabled", false)
+              }
+          }
+      </script>
   </head>
   
   <body>
@@ -48,26 +81,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								 <br><br>
 								 <label>密码：</label><input type="password" id="upwd" name="upwd"/>
 								 <br><br>
-								 <button type="submit" class="btn">提交</button>
+								 <button type="submit" class="btn">登录</button>
 							</fieldset>
 						</form>
 					</div>
 					<div class="tab-pane" id="panel-419379">
-						<form name="form2" method="post" action="UsersAddServlet">
+						<form name="myform" method="post" action="userExecute" onsubmit="return test()">
 							<fieldset>
 								 <legend>注册</legend>
-								 <label>用户帐号：</label><input type="text" id="usersid" name="usersid"/>
+								 <label>用户帐号：</label><input type="text" id="usersId" name="usersId"/>
 								 <br><br>
 								 <label>真实姓名：</label><input type="text" id="uname" name="uname"/>		 
 								 <br><br>
 								 <label>用户密码：</label><input type="password" id="upwd" name="upwd"/>
 								 <br><br>
-								 <label>用户性别：</label><input type="radio" id="ugender" name="ugender" value="男"/>&nbsp男&nbsp&nbsp
+								 <label>用户性别：</label>
+                                 <input type="radio" id="ugender" name="ugender" value="男" checked="checked"/>&nbsp男&nbsp&nbsp
 								 <input type="radio" id="ugender" name="ugender" value="女"/>&nbsp女 <br>
 								 <input type="hidden" name="ulimit" value="0"></input>   
 								 <span class="help-block"><a>院校资源库使用守则.</a></span> 
-								 <label class="checkbox" style="left:7%"><input type="checkbox" /> 勾选同意</label>
-								 <button type="submit" class="btn">提交</button>
+								 <label class="checkbox" style="left:7%"><input type="checkbox" name="agree" id="agree" /> 勾选同意</label>
+								 <button type="submit" name="sub" class="btn">提交</button>
 							</fieldset>
 						</form>
 					</div>

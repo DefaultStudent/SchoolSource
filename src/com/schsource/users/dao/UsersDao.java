@@ -4,6 +4,7 @@ import com.schsource.users.vo.Users;
 import com.schsource.utils.PageHibernateCallBack;
 import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -39,6 +40,7 @@ public class UsersDao extends HibernateDaoSupport {
      * 用户注册/添加
      * @param users
      */
+    @Transactional(readOnly = false)
     public void register(Users users) {
         this.getHibernateTemplate().save(users);
     }

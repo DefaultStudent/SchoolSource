@@ -9,6 +9,7 @@ import com.schsource.utils.PageBean;
 import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class UsersAction extends ActionSupport implements ModelDriven<Users> {
@@ -82,13 +83,19 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         int usersId = Integer.parseInt(request.getParameter("usersId"));
-        usersService.findUsersById(usersId);
-        session.setAttribute("usersId", users.getUsersId());
-        session.setAttribute("uPwd", users.getUpwd());
-        session.setAttribute("uName", users.getUname());
-        session.setAttribute("uGender", users.getUgender());
-        session.setAttribute("uLimit", users.getUlimit());
-        return SUCCESS;
+        try {
+            usersService.findUsersById(usersId);
+            session.setAttribute("usersId", users.getUsersId());
+            session.setAttribute("uPwd", users.getUpwd());
+            session.setAttribute("uName", users.getUname());
+            session.setAttribute("uGender", users.getUgender());
+            session.setAttribute("uLimit", users.getUlimit());
+            return SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            return INPUT;
+        }
     }
 
     /**
@@ -108,5 +115,17 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
         PageBean<Users> pageBean = usersService.findUsersByPage(page);
         ActionContext.getContext().getValueStack().set("pageBean", pageBean);
         return SUCCESS;
+    }
+
+    public String executUsers() throws Exception{
+        Users user = usersService.findUsersById(users.getUsersId());
+        HttpServletResponse respones= ServletActionContext.getResponse();
+        respones.setContentType("text/html;charset=UTF-8");
+        if (user != null) {
+            respones.getWriter().println("<font color='red'>用户名已存在</font>");
+            return INPUT;
+        } else {
+            return SUCCESS;
+        }
     }
 }
