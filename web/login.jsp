@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</form>
 					</div>
 					<div class="tab-pane" id="panel-419379">
-						<form name="myform" method="post" action="userExecute" onsubmit="return test()">
+						<form name="myform" method="post" action="userExecute">
 							<fieldset>
 								 <legend>注册</legend>
 								 <label>用户帐号：</label><input type="text" id="usersId" name="usersId"/>
@@ -101,7 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								 <input type="hidden" name="ulimit" value="0"></input>   
 								 <span class="help-block"><a>院校资源库使用守则.</a></span> 
 								 <label class="checkbox" style="left:7%"><input type="checkbox" name="agree" id="agree" /> 勾选同意</label>
-								 <button type="submit" name="sub" class="btn">提交</button>
+								 <button type="submit" name="sub" class="btn">注册</button>
 							</fieldset>
 						</form>
 					</div>

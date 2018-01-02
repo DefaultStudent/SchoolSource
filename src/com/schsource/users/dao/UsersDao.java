@@ -49,6 +49,7 @@ public class UsersDao extends HibernateDaoSupport {
      * 删除用户
      * @param users
      */
+    @Transactional(readOnly = false)
     public void deleteUsers(Users users) {
         this.getHibernateTemplate().delete(users);
     }
@@ -57,11 +58,9 @@ public class UsersDao extends HibernateDaoSupport {
      * 修改用户信息
      * @param users
      */
+    @Transactional(readOnly = false)
     public void updateUsers(Users users) {
-        String hql = "update Users set upwd = ?, uname = ?, ugender = ?, ulimit = ? where usersId = ?";
-        Object[] objects = {users.getUpwd(), users.getUname(), users.getUgender(),
-                users.getUlimit(), users.getUsersId()};
-        this.getHibernateTemplate().saveOrUpdate(hql, objects);
+        this.getHibernateTemplate().saveOrUpdate(users);
     }
 
     /**
@@ -78,7 +77,7 @@ public class UsersDao extends HibernateDaoSupport {
      * @return
      */
     public int getUsersPageCount() {
-        String hql = "select count(*) from School";
+        String hql = "select count(*) from Users";
         List<Long> list = (List<Long>) this.getHibernateTemplate().find(hql);
         if (list != null && list.size() > 0) {
             return list.get(0).intValue();
@@ -98,6 +97,20 @@ public class UsersDao extends HibernateDaoSupport {
                 new PageHibernateCallBack(hql, new Object[]{}, begin, limit));
         if (list != null && list.size() > 0) {
             return list;
+        }
+        return null;
+    }
+
+    /**
+     * 根据uname查询用户信息
+     * @param uname
+     * @return
+     */
+    public Users getUsersByName(String uname) {
+        String hql = "from Users where uname = ?";
+        List<Users> list = (List<Users>) this.getHibernateTemplate().find(hql, uname);
+        if (list != null && list.size() > 0) {
+            return list.get(0);
         }
         return null;
     }

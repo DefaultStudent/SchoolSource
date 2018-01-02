@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * @author vodka
+ * @date 2017-12-30
+ * @version 1.0
+ */
+
 public class UsersAction extends ActionSupport implements ModelDriven<Users> {
 
     private Users users = new Users();
@@ -83,19 +89,31 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         int usersId = Integer.parseInt(request.getParameter("usersId"));
+        Users users = usersService.findUsersById(usersId);
+        session.setAttribute("usersId", users.getUsersId());
+        session.setAttribute("uPwd", users.getUpwd());
+        session.setAttribute("uName", users.getUname());
+        session.setAttribute("uGender", users.getUgender());
+        session.setAttribute("ulimit", users.getUlimit());
+        return SUCCESS;
+    }
+
+    public String getUsersByName() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
         try {
-            usersService.findUsersById(usersId);
+            String uname = request.getParameter("uname");
+            Users users = usersService.findUsersByName(uname);
             session.setAttribute("usersId", users.getUsersId());
             session.setAttribute("uPwd", users.getUpwd());
             session.setAttribute("uName", users.getUname());
             session.setAttribute("uGender", users.getUgender());
-            session.setAttribute("uLimit", users.getUlimit());
-            return SUCCESS;
+            session.setAttribute("ulimit", users.getUlimit());
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            return INPUT;
+            return ERROR;
         }
+        return SUCCESS;
     }
 
     /**
@@ -113,10 +131,15 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
      */
     public String listAllUsers() {
         PageBean<Users> pageBean = usersService.findUsersByPage(page);
-        ActionContext.getContext().getValueStack().set("pageBean", pageBean);
+        ActionContext.getContext().getValueStack().set("PageBean", pageBean);
         return SUCCESS;
     }
 
+    /**
+     * 验证用户是否已经存在
+     * @return
+     * @throws Exception
+     */
     public String executUsers() throws Exception{
         Users user = usersService.findUsersById(users.getUsersId());
         HttpServletResponse respones= ServletActionContext.getResponse();
@@ -124,8 +147,7 @@ public class UsersAction extends ActionSupport implements ModelDriven<Users> {
         if (user != null) {
             respones.getWriter().println("<font color='red'>用户名已存在</font>");
             return INPUT;
-        } else {
-            return SUCCESS;
         }
+        return SUCCESS;
     }
 }

@@ -31,6 +31,7 @@
                 <li role="presentation"><a href="findAllSchool">院校信息管理 </a></li>
                 <li role="presentation"><a href="#">专业信息管理 </a></li>
                 <li role="presentation"><a href="getAllType">院校类型信息管理</a></li>
+                <li role="presentation"><a href="listAllUsers">用户信息管理</a></li>
                 <li role="presentation"><a href="#">欢迎您：&nbsp;<s:property value="uname"/></a></li>
             </ul>
         </div>

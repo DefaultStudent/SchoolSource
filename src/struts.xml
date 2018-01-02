@@ -46,13 +46,17 @@
             <result name="input">login.jsp</result>
         </action>
         <action name="getUsersById" class="com.schsource.users.action.UsersAction" method="getUsersById">
-            <result></result>
+            <result name="success">/users_update.jsp</result>
+        </action>
+        <action name="getUsersByName" class="com.schsource.users.action.UsersAction" method="getUsersByName">
+            <result>/users_show.jsp</result>
+            <result name="error">/404.html</result>
         </action>
         <action name="updateUsers" class="com.schsource.users.action.UsersAction" method="updateUsers">
             <result type="chain">listAllUsers</result>
         </action>
         <action name="listAllUsers" class="com.schsource.users.action.UsersAction" method="listAllUsers">
-            <result></result>
+            <result>/users_queryall.jsp</result>
         </action>
         <action name="insertUsers" class="com.schsource.users.action.UsersAction" method="saveUsers">
             <result type="chain">listAllUsers</result>
@@ -60,6 +64,10 @@
         <action name="userExecute" class="com.schsource.users.action.UsersAction" method="executUsers">
             <result name="success" type="chain">register</result>
             <result name="input">/login.jsp</result>
+        </action>
+        <action name="userExecute1" class="com.schsource.users.action.UsersAction" method="executUsers">
+            <result name="success" type="chain">register</result>
+            <result name="input">/users_add.jsp</result>
         </action>
 
         <!-- 院校类型 -->

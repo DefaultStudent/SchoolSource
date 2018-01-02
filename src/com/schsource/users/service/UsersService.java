@@ -64,6 +64,10 @@ public class UsersService {
         return usersDao.findUsersById(usersId);
     }
 
+    public Users findUsersByName(String uname) {
+        return usersDao.getUsersByName(uname);
+    }
+
     /**
      * 分页显示全部用户信息
      * @param page
@@ -72,11 +76,14 @@ public class UsersService {
     public PageBean<Users> findUsersByPage(int page) {
         PageBean<Users> pageBean = new PageBean<Users>();
         pageBean.setPage(page);
-        int limit = 20;
+        int limit = 5;
         pageBean.setLimit(limit);
 
         int totalCount = usersDao.getUsersPageCount();
         pageBean.setTotalCount(totalCount);
+
+        int totalPage = totalCount % limit == 0 ? totalCount/limit : totalCount/limit+1;
+        pageBean.setTotalPage(totalPage);
 
         // 每页显示数据的集合
         int begin = (page - 1) * limit;
