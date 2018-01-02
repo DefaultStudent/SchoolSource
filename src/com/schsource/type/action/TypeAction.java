@@ -73,6 +73,10 @@ public class TypeAction extends ActionSupport implements ModelDriven<Type>{
         return SUCCESS;
     }
 
+    /**
+     * 根据Id获取院校类型信息
+     * @return
+     */
     public String getTypeById() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
@@ -80,6 +84,34 @@ public class TypeAction extends ActionSupport implements ModelDriven<Type>{
         Type type = typeService.getTypeById(tid);
         session.setAttribute("tid", type.getTid());
         session.setAttribute("tname", type.getTname());
+        return SUCCESS;
+    }
+
+    /**
+     * 根据tname查询院校类型信息
+     * @return
+     */
+    public String getTypeByName() {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        String tname = (String) request.getAttribute("tname");
+        try {
+            Type type = typeService.getTypeByName(tname);
+            session.setAttribute("tid", type.getTid());
+            session.setAttribute("tname", type.getTname());
+            return SUCCESS;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return INPUT;
+        }
+    }
+
+    /**
+     * 修改院校类型信息
+     * @return
+     */
+    public String updateType() {
+        typeService.updateType(type);
         return SUCCESS;
     }
 }

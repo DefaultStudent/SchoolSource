@@ -81,14 +81,21 @@ public class TypeDao extends HibernateDaoSupport{
      * @return
      */
     public Type getTypeByName(String tName) {
-        return this.getHibernateTemplate().get(Type.class, tName);
+        String hql = "from Type where tname = ?";
+        List<Type> list = (List<Type>) this.getHibernateTemplate().find(hql, tName);
+
+        if (list != null && list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
     }
 
     /**
      * 更新院校类型信息
      * @param type
      */
+    @Transactional(readOnly = false)
     public void updateType(Type type) {
-        this.getHibernateTemplate().saveOrUpdate(type);
+        this.getHibernateTemplate().update(type);
     }
 }

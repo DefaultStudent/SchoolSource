@@ -23,8 +23,8 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12">
-            <form class="form-search">
-                <input class="input-medium search-query" type="text" /><button class="btn" type="submit">查找</button>
+            <form class="form-search" method="post" action="getTypeByName">
+                <input class="input-medium search-query" type="text" name="tname" /><button class="btn" type="submit">查找</button>
             </form>
             <a href="type_add.jsp">院校类型添加</a>
             <table class="table table-condensed">

@@ -20,8 +20,8 @@
 <body>
 <%@ include file="head_admin.jsp"%>
 <div>
-    <form method="post" action="" name="form1">
-        院校类型编号：<input name="tid" disabled="disabled" value="<s:property value="%{#session.tid}"/>"/><br>
+    <form method="post" action="updateType" name="form1">
+        <input name="tid" type="hidden" value="<s:property value="%{#session.tid}"/>"/><br>
         院校类型名称：<input name="tname" value="<s:property value="%{#session.tname}"/>"><br>
         <input type="submit" value="修改">
     </form>

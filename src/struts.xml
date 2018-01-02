@@ -70,5 +70,12 @@
         <action name="getTypeById" class="com.schsource.type.action.TypeAction" method="getTypeById">
             <result>/type_update.jsp</result>
         </action>
+        <action name="getTypeByName" class="com.schsource.type.action.TypeAction" method="getTypeByName">
+            <result name="success">/type_show.jsp</result>
+            <result name="input">/404.html</result>
+        </action>
+        <action name="updateType" class="com.schsource.type.action.TypeAction" method="updateType">
+            <result type="chain">getAllType</result>
+        </action>
     </package>
 </struts>
