@@ -51,7 +51,7 @@
     </script>
 </head>
 <body>
-<form name="myform" method="post" action="userExecute1">
+<form name="myform" method="post" action="userExecute1" onsubmit="test()">
     <fieldset>
         <legend>注册</legend>
         <label>用户帐号：</label><input type="text" id="usersId" name="usersId"/>
