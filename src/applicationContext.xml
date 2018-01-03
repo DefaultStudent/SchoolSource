@@ -34,6 +34,7 @@
                 <value>com/schsource/users/vo/Users.hbm.xml</value>
                 <value>com/schsource/school/vo/School.hbm.xml</value>
                 <value>com/schsource/type/vo/Type.hbm.xml</value>
+                <value>com/schsource/professional/vo/Professional.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -57,6 +58,9 @@
     <bean id="typeAction" class="com.schsource.type.action.TypeAction">
         <property name="typeService" ref="typeService"/>
     </bean>
+    <bean id="professioanlAction" class="com.schsource.professional.action.ProfessionalAction">
+        <property name="professionalService" ref="professionalService"/>
+    </bean>
 
     <!-- 配置service层 -->
     <bean id="schoolService" class="com.schsource.school.service.SchoolService">
@@ -68,6 +72,9 @@
     <bean id="typeService" class="com.schsource.type.service.TypeService">
         <property name="typeDao" ref="typeDao"/>
     </bean>
+    <bean id="professionalService" class="com.schsource.professional.service.ProfessionalService">
+        <property name="professionalDao" ref="professionalDao"/>
+    </bean>
 
     <!-- 配置dao层 -->
     <bean id="usersDao" class="com.schsource.users.dao.UsersDao">
@@ -77,6 +84,9 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <bean id="typeDao" class="com.schsource.type.dao.TypeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="professionalDao" class="com.schsource.professional.dao.ProfessionalDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 </beans>
