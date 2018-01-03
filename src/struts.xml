@@ -90,5 +90,31 @@
         <action name="updateType" class="com.schsource.type.action.TypeAction" method="updateType">
             <result type="chain">getAllType</result>
         </action>
+
+        <!-- 专业 -->
+        <action name="getAllProfessional" class="com.schsource.professional.action.ProfessionalAction" method="getAllProfessional">
+            <result>/professional_queryall.jsp</result>
+        </action>
+        <action name="saveProfessional" class="com.schsource.professional.action.ProfessionalAction" method="saveProfessional">
+            <result type="chain">getAllProfessional</result>
+            <result name="input" type="chain">getAllProfessional</result>
+        </action>
+        <action name="removeProfessionl" class="com.schsource.professional.action.ProfessionalAction" method="deleteProfessional">
+            <result type="chain">getAllProfessional</result>
+        </action>
+        <action name="updateProfessional" class="com.schsource.professional.action.ProfessionalAction" method="updateProfessional">
+            <result type="chain" name="success">getAllProfessional</result>
+            <result name="input">/pro_update.jsp</result>
+        </action>
+        <action name="getProfessionalById" class="com.schsource.professional.action.ProfessionalAction" method="getProfessionalById">
+            <result>/pro_update.jsp</result>
+        </action>
+        <action name="executeProfessionalS" class="com.schsource.professional.action.ProfessionalAction" method="executeProfessional">
+            <result name="input">/type_show.jsp</result>
+            <result name="success" type="chain">saveProfessional</result>
+        </action>
+        <action name="getProfessionalByName" class="com.schsource.professional.action.ProfessionalAction" method="getProfessionalByName">
+            <result>/pro_show.jsp</result>
+        </action>
     </package>
 </struts>

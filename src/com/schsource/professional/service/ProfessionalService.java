@@ -72,7 +72,7 @@ public class ProfessionalService {
      * @param pid
      * @return
      */
-    public Professional getProfessional(int pid) {
+    public Professional getProfessionalById(int pid) {
         return professionalDao.getProfessionalById(pid);
     }
 
@@ -81,7 +81,7 @@ public class ProfessionalService {
      * @param pname
      * @return
      */
-    public Professional getProfessional(String pname) {
+    public Professional getProfessionalByName(String pname) {
         return professionalDao.getProfessionalByName(pname);
     }
 }
