@@ -7,7 +7,7 @@
 
 - ~~院校类型管理~~
 
-- 专业管理
+- ~~专业管理~~
 ## 预计技术难点(只是本菜鸡不会的)
 - ~~文件上传~~
 
@@ -23,6 +23,6 @@
 
 还是多去看看好项目吧(我的真是菜的)：
 
-<a href="https://github.com/codeagles"> ***codeagles(大佬)***</a>
+<a href="https://github.com/codeagles">codeagles(大佬)</a>
 
-<a href="https://github.com/wangwren"> ***wangwren(大佬)***</a>
+<a href="https://github.com/wangwren">wangwren(大佬)</a>
