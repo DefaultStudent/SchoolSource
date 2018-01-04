@@ -1,16 +1,15 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: vodka
-  Date: 2017/12/30
-  Time: 下午7:33
+  Date: 2018/1/4
+  Time: 下午2:20
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Untitled</title>
+    <title>Title</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
@@ -21,13 +20,12 @@
 </head>
 <body>
 <div class="container-fluid">
-    <%@include file="head_admin.jsp"%>
+    <%@include file="head_users.jsp"%>
     <div class="row-fluid">
         <div class="span12">
-            <form class="form-search" method="post" action="getSchoolByNameT">
+            <form class="form-search" method="post" action="getSchoolByNameTU">
                 <input class="input-medium search-query" type="text" name="schname" /> <button type="submit" class="btn">查找</button>
             </form>
-            <a href="school_add.jsp">院校信息添加</a>
             <table class="table">
                 <thead>
                 <tr>
@@ -49,36 +47,30 @@
                     <th>
                         详情
                     </th>
-                    <th>
-                        操作
-                    </th>
                 </tr>
                 </thead>
                 <tbody>
                 <s:iterator value="PageBean.list">
-                <tr>
-                    <td>
-                        <s:property value="schid"/>
-                    </td>
-                    <td>
-                        <img src="upload<s:property value="schpic"/>" style="width: 100px; height: 100px">
-                    </td>
-                    <td>
-                        <s:property value="schname"/>
-                    </td>
-                    <td>
-                        <s:property value="teacher"/>
-                    </td>
-                    <td>
-                        <s:property value="schaddress"/>
-                    </td>
-                    <td>
-                        <s:a href="getSchoolByName?schname=%{schname}">查看</s:a>
-                    </td>
-                    <td>
-                        <s:a href="getSchoolById?schid=%{schid}">修改</s:a>&nbsp;|&nbsp;<s:a href="removeSchool?schid=%{schid}">删除</s:a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>
+                            <s:property value="schid"/>
+                        </td>
+                        <td>
+                            <img src="upload<s:property value="schpic"/>" style="width: 100px; height: 100px">
+                        </td>
+                        <td>
+                            <s:property value="schname"/>
+                        </td>
+                        <td>
+                            <s:property value="teacher"/>
+                        </td>
+                        <td>
+                            <s:property value="schaddress"/>
+                        </td>
+                        <td>
+                            <s:a href="getSchoolByName?schname=%{schname}">查看</s:a>
+                        </td>
+                    </tr>
                 </s:iterator>
                 <tr align="center">
                     <td colspan="4">
