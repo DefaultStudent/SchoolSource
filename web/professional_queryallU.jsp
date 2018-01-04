@@ -26,7 +26,6 @@
             <form class="form-search" method="post" name="myform" action="getProfessionalByNameU" onsubmit="test()">
                 <input class="input-medium search-query" type="text" name="pname" /><button class="btn" type="submit">查找</button>
             </form>
-            <a href="pro_add.jsp">专业信息添加</a>
             <table class="table table-condensed">
                 <thead>
                 <tr>

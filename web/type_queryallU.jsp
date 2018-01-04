@@ -34,7 +34,6 @@
             <form class="form-search" method="post" name="myform" action="getTypeByNameU" onsubmit="test()">
                 <input class="input-medium search-query" type="text" name="tname" /><button class="btn" type="submit">查找</button>
             </form>
-            <a href="type_add.jsp">院校类型添加</a>
             <table class="table table-condensed">
                 <thead>
                 <tr>

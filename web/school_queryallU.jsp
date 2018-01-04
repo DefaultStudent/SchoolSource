@@ -26,7 +26,6 @@
             <form class="form-search" method="post" action="getSchoolByNameTU">
                 <input class="input-medium search-query" type="text" name="schname" /> <button type="submit" class="btn">查找</button>
             </form>
-            <a href="school_add.jsp">院校信息添加</a>
             <table class="table">
                 <thead>
                 <tr>
