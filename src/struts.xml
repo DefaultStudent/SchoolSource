@@ -15,6 +15,9 @@
         <action name="findAllSchool" class="com.schsource.school.action.SchoolAction" method="listAllSchool">
             <result>/school_queryall.jsp</result>
         </action>
+        <action name="findAllSchoolU" class="com.schsource.school.action.SchoolAction" method="listAllSchool">
+            <result>/school_queryallU.jsp</result>
+        </action>
         <action name="getSchoolById" class="com.schsource.school.action.SchoolAction" method="getSchoolById">
             <result>/school_update.jsp</result>
         </action>
@@ -32,6 +35,9 @@
         </action>
         <action name="getSchoolByNameT" class="com.schsource.school.action.SchoolAction" method="getSchoolByNameT">
             <result>/school_show.jsp</result>
+        </action>
+        <action name="getSchoolByNameTU" class="com.schsource.school.action.SchoolAction" method="getSchoolByNameT">
+            <result>/school_showU.jsp</result>
         </action>
 
         <!-- 用户 -->
@@ -74,6 +80,9 @@
         <action name="getAllType" class="com.schsource.type.action.TypeAction" method="getAllType">
             <result>/type_queryall.jsp</result>
         </action>
+        <action name="getAllTypeU" class="com.schsource.type.action.TypeAction" method="getAllType">
+            <result>/type_queryallU.jsp</result>
+        </action>
         <action name="removeType" class="com.schsource.type.action.TypeAction" method="removeType">
             <result type="chain">getAllType</result>
         </action>
@@ -87,6 +96,10 @@
             <result name="success">/type_show.jsp</result>
             <result name="input">/404.html</result>
         </action>
+        <action name="getTypeByNameU" class="com.schsource.type.action.TypeAction" method="getTypeByName">
+            <result name="success">/type_showU.jsp</result>
+            <result name="input">/404.html</result>
+        </action>
         <action name="updateType" class="com.schsource.type.action.TypeAction" method="updateType">
             <result type="chain">getAllType</result>
         </action>
@@ -94,6 +107,9 @@
         <!-- 专业 -->
         <action name="getAllProfessional" class="com.schsource.professional.action.ProfessionalAction" method="getAllProfessional">
             <result>/professional_queryall.jsp</result>
+        </action>
+        <action name="getAllProfessionalU" class="com.schsource.professional.action.ProfessionalAction" method="getAllProfessional">
+            <result>/professional_queryallU.jsp</result>
         </action>
         <action name="saveProfessional" class="com.schsource.professional.action.ProfessionalAction" method="saveProfessional">
             <result type="chain">getAllProfessional</result>
@@ -115,6 +131,9 @@
         </action>
         <action name="getProfessionalByName" class="com.schsource.professional.action.ProfessionalAction" method="getProfessionalByName">
             <result>/pro_show.jsp</result>
+        </action>
+        <action name="getProfessionalByNameU" class="com.schsource.professional.action.ProfessionalAction" method="getProfessionalByName">
+            <result>/pro_showU.jsp</result>
         </action>
     </package>
 </struts>
